@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Топ игроков и мемов @MemeJoyBot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e1e2f 0%, #2a2a4a 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #2e2e4a;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffd700;
+            text-align: center;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section h2 {
+            font-size: 20px;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+        .player {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #3e3e5a;
+            border-radius: 10px;
+        }
+        .player img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .player-info {
+            flex: 1;
+        }
+        .player-info .username {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .player-info .score {
+            font-size: 14px;
+            color: #d3d3d3;
+        }
+        .meme {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #3e3e5a;
+            border-radius: 10px;
+        }
+        .meme img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .meme .info {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 Топ игроков и мемов</h1>
+
+        <div class="section">
+            <h2>👑 Топ-3 игроков</h2>
+            <!-- Эти данные нужно динамически подгружать через JavaScript -->
+            <div id="top-players"></div>
+        </div>
+
+        <div class="section">
+            <h2>😂 Топ-5 мемов</h2>
+            <!-- Эти данные нужно динамически подгружать через JavaScript -->
+            <div id="top-memes"></div>
+        </div>
+    </div>
+
+    <script>
+        // Пример данных (в реальном приложении нужно подгружать через API)
+        const topPlayers = [
+            { username: "User1", score: 150, avatar: "https://via.placeholder.com/50" },
+            { username: "User2", score: 120, avatar: "https://via.placeholder.com/50" },
+            { username: "User3", score: 100, avatar: "https://via.placeholder.com/50" }
+        ];
+
+        const topMemes = [
+            { id: 1, url: "https://via.placeholder.com/300x200", likes: 50, dislikes: 10 },
+            { id: 2, url: "https://via.placeholder.com/300x200", likes: 45, dislikes: 5 },
+            { id: 3, url: "https://via.placeholder.com/300x200", likes: 40, dislikes: 8 },
+            { id: 4, url: "https://via.placeholder.com/300x200", likes: 35, dislikes: 3 },
+            { id: 5, url: "https://via.placeholder.com/300x200", likes: 30, dislikes: 2 }
+        ];
+
+        // Отображаем топ игроков
+        const playersContainer = document.getElementById("top-players");
+        topPlayers.forEach(player => {
+            const playerDiv = document.createElement("div");
+            playerDiv.className = "player";
+            playerDiv.innerHTML = `
+                <img src="${player.avatar}" alt="${player.username}">
+                <div class="player-info">
+                    <div class="username">@${player.username}</div>
+                    <div class="score">Очки: ${player.score}</div>
+                </div>
+            `;
+            playersContainer.appendChild(playerDiv);
+        });
+
+        // Отображаем топ мемов
+        const memesContainer = document.getElementById("top-memes");
+        topMemes.forEach(meme => {
+            const memeDiv = document.createElement("div");
+            memeDiv.className = "meme";
+            memeDiv.innerHTML = `
+                <img src="${meme.url}" alt="Meme ${meme.id}">
+                <div class="info">ID: ${meme.id} | 😂 ${meme.likes} | 😐 ${meme.dislikes}</div>
+            `;
+            memesContainer.appendChild(memeDiv);
+        });
+    </script>
+</body>
+</html>
